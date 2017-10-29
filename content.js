@@ -1,6 +1,5 @@
 $(document).ready(function () {
-
-
+    var prevhref = null;
     var s = document.createElement("script");
     s.type = "text/javascript";
     s.src = "https://embed.twitch.tv/embed/v1.js";
@@ -93,10 +92,18 @@ $(document).ready(function () {
     };
 
     window.addEventListener('resize', function () {
-        /*div.style.right = 0;
-        div.style.top = "30%";
-        div.style.transform = "rotate(" + 0 + "deg)";*/
         div.style.visibility = 'hidden';
+        if (location.href!=prevhref) {
+            prevhref=location.href;
+            frame.remove();
+            frame = document.createElement("IFRAME");
+            frame.setAttribute("src", "https://www.twitch.tv" + location.pathname + "/chat")
+            frame.setAttribute("scrolling", "no")
+            frame.setAttribute("id", "frame")
+            frame.setAttribute("height", "500px")
+            frame.setAttribute("width", "350px")
+            div.appendChild(frame);
+        }
     });
 
     dragElement(div);
