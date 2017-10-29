@@ -53,7 +53,7 @@ $(document).ready(function () {
     div.style.position = "absolute";
     div.style.visibility = "hidden";
     var angle = 0;
-    var mode = 0;
+    var mode = 1;
 
     document.onkeydown = function (e) {
         if (document.webkitIsFullScreen) {
@@ -62,6 +62,10 @@ $(document).ready(function () {
                     div.style.visibility = 'visible';
                 }
                 else div.style.visibility = 'hidden';
+            }
+            else if (e.ctrlKey) {
+                if (mode == 0) mode = 1;
+                else mode = 0;
             }
             if (e.key == 'q' && e.altKey) {
                 if (mode == 0) {
@@ -84,10 +88,6 @@ $(document).ready(function () {
                     angle = angle - 10;
                     div.style.transform = "rotate(" + angle + "deg)";
                 }
-            }
-            if (e.ctrlKey) {
-                if (mode == 0) mode = 1;
-                else mode = 0;
             }
         }
     };
