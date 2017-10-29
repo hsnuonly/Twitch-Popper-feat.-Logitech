@@ -56,7 +56,7 @@ $(document).ready(function () {
 
     document.onkeydown = function (e) {
         if (document.webkitIsFullScreen) {
-            if (e.key == 'q' && e.ctrlKey) {
+            if (e.keyCode == 81 && e.ctrlKey) {
                 if (div.style.visibility == 'hidden') {
                     div.style.visibility = 'visible';
                 }
@@ -66,7 +66,7 @@ $(document).ready(function () {
                 if (mode == 0) mode = 1;
                 else mode = 0;
             }
-            if (e.key == 'q' && e.altKey) {
+            if (e.keyCode == 81 && e.altKey) {
                 if (mode == 0) {
                     var doc = frame.contentDocument || frame.contentWindow.document;
                     var scroll = doc.getElementsByClassName('tse-scroll-content');
@@ -77,7 +77,7 @@ $(document).ready(function () {
                     div.style.transform = "rotate(" + angle + "deg)";
                 }
             }
-            if (e.key == 'a' && e.altKey) {
+            if (e.keyCode == 65 && e.altKey) {
                 if (mode == 0) {
                     var doc = frame.contentDocument || frame.contentWindow.document;
                     var scroll = doc.getElementsByClassName('tse-scroll-content');
