@@ -14,13 +14,7 @@ $(document).ready(function () {
     bsj.src = "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js";
     var bsc = document.createElement("link");
     bsc.rel = "stylesheet"
-    bsc.src = "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap";
-
-    document.head.append(s);
-    document.head.append(jq);
-    document.head.append(pp);
-    document.head.append(bsj);
-    document.head.append(bsc);
+    bsc.src = "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css";
 
     var root = document.getElementById("app");
     var div = document.createElement("DIV");
@@ -126,6 +120,8 @@ $(document).ready(function () {
             document.onmouseup = closeDragElement;
             // call a function whenever the cursor moves:
             document.onmousemove = elementDrag;
+            div.onmousemove = elementDrag;
+            document.onmouseup = closeDragElement;
         }
 
         function elementDrag(e) {
@@ -144,6 +140,8 @@ $(document).ready(function () {
             /* stop moving when mouse button is released:*/
             document.onmouseup = null;
             document.onmousemove = null;
+            div.onmouseup = null;
+            div.onmousemove = null;
         }
     }
 

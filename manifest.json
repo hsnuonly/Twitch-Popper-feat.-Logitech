@@ -8,9 +8,13 @@
         "*://*.twitch.tv/*"
       ],
       "js": [
+        "v1.js",
         "jquery-3.2.1.min.js",
+        "popper.min.js",
+        "bootstrap.min.js",
         "content.js"
-      ]
+      ],
+      "css":["bootstrap.min.css"]
     }
   ],
   "icons": {
