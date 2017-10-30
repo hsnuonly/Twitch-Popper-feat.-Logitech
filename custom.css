@@ -1,6 +1,9 @@
 #twitch{
     display: inline-block;
-    top: 30%;
+    width: 20%;
+    height: 50%;
+    top: 50%;
+    left: 0%;
     position: absolute;
     visibility: hidden;
     z-index: 2147483647;
@@ -11,19 +14,24 @@
 }
 
 #pop-header{
-    height: 375px;
-    width: 300px;
+    height: 70%;
+    width: 90%;
     opacity: 0;
     position: absolute;
     z-index: 10000;
 }
 
 #pop-footer{
-    left: 75px;
-    top:450px;
-    height: 50px;
-    width: 200px;
+    left: 27%;
+    top:86%;
+    height: 14%;
+    width: 51%;
     opacity: 0;
     position: absolute;
     z-index: 10000;
+}
+
+#frame{
+    width: 100%;
+    height: 100%;
 }

@@ -10,8 +10,6 @@ window.onload = function () {
     frame.setAttribute("src", "https://www.twitch.tv" + location.pathname + "/chat")
     frame.setAttribute("scrolling", "no")
     frame.setAttribute("id", "frame")
-    frame.setAttribute("height", "500px")
-    frame.setAttribute("width", "350px")
 
     var head = document.createElement("DIV");
     head.setAttribute("id", "pop-header")
@@ -28,7 +26,7 @@ window.onload = function () {
     $("#twitch").draggable();
     document.onkeydown = function (e) {
         if (document.webkitIsFullScreen) {
-            if (e.keyCode == 81 && e.ctrlKey||e.keyCode==9) {
+            if (e.keyCode == 81 && e.ctrlKey || e.keyCode == 9) {
                 if (div.style.visibility == 'hidden') {
                     div.style.visibility = 'visible';
                 }
@@ -38,7 +36,7 @@ window.onload = function () {
                 if (mode == 0) mode = 1;
                 else mode = 0;
             }
-            if (e.keyCode == 81 && e.altKey||e.keyCode == 187) {
+            if (e.keyCode == 81 && e.altKey || e.keyCode == 187) {
                 if (mode == 0) {
                     var doc = frame.contentDocument || frame.contentWindow.document;
                     var scroll = doc.getElementsByClassName('tse-scroll-content');
@@ -49,7 +47,7 @@ window.onload = function () {
                     div.style.transform = "rotate(" + angle + "deg)";
                 }
             }
-            if (e.keyCode == 65 && e.altKey||e.keyCode == 189) {
+            if (e.keyCode == 65 && e.altKey || e.keyCode == 189) {
                 if (mode == 0) {
                     var doc = frame.contentDocument || frame.contentWindow.document;
                     var scroll = doc.getElementsByClassName('tse-scroll-content');
@@ -65,17 +63,10 @@ window.onload = function () {
 
     window.addEventListener('resize', function () {
         div.style.visibility = 'hidden';
-        if (location.href!=prevhref) {
-            prevhref=location.href;
-            frame.remove();
-            frame = document.createElement("IFRAME");
+        if (location.href != prevhref) {
+            prevhref = location.href;
             frame.setAttribute("src", "https://www.twitch.tv" + location.pathname + "/chat")
-            frame.setAttribute("scrolling", "no")
-            frame.setAttribute("id", "frame")
-            frame.setAttribute("height", "500px")
-            frame.setAttribute("width", "350px")
-            div.appendChild(frame);
+            frame.reload();
         }
     });
-
 }

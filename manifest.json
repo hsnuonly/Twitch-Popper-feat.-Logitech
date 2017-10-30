@@ -13,7 +13,7 @@
         "content.js",
         "jquery-ui.min.js"
       ],
-      "css":["bootstrap.min.css","custom.css"]
+      "css":["custom.css"]
     }
   ],
   "icons": {
