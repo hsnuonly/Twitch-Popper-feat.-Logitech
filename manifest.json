@@ -10,12 +10,10 @@
       "js": [
         "v1.js",
         "jquery-3.2.1.min.js",
-        "popper.min.js",
-        "bootstrap.min.js",
         "content.js",
         "jquery-ui.min.js"
       ],
-      "css":["bootstrap.min.css","jquery-ui.min.css","custom.css"]
+      "css":["bootstrap.min.css","custom.css"]
     }
   ],
   "icons": {

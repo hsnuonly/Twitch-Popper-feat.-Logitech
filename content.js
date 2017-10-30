@@ -4,7 +4,6 @@ window.onload = function () {
     var root = document.getElementById("app");
     var div = document.createElement("DIV");
     var frame = document.createElement("IFRAME");
-    div.setAttribute("class", "card");
     //div.style.width = "350px";
     //div.style.height = "500px";
     div.setAttribute("id", "twitch")
@@ -17,25 +16,19 @@ window.onload = function () {
     var head = document.createElement("DIV");
     head.setAttribute("id", "pop-header")
     div.appendChild(head);
+    var footer = document.createElement("DIV");
+    footer.setAttribute("id", "pop-footer")
+    div.appendChild(footer);
 
     div.appendChild(frame);
     document.body.appendChild(div);
     var angle = 0;
-    var mode = 1;
+    var mode = 0;
 
-    $("#twitch").draggable({
-        start: function () {
-            $(".AllContainerDivs").each(function (index, element) {
-            var d = $('<div class="iframeCover" style="zindex:99;position:absolute;width:100%;top:0px;left:0px;height:' + $(element).height() + 'px"></div>');
-            $(element).append(d);});
-        },
-        stop: function () {
-            $('.iframeCover').remove();
-        }
-    });
+    $("#twitch").draggable();
     document.onkeydown = function (e) {
         if (document.webkitIsFullScreen) {
-            if (e.keyCode == 81 && e.ctrlKey) {
+            if (e.keyCode == 81 && e.ctrlKey||e.keyCode==9) {
                 if (div.style.visibility == 'hidden') {
                     div.style.visibility = 'visible';
                 }
@@ -45,7 +38,7 @@ window.onload = function () {
                 if (mode == 0) mode = 1;
                 else mode = 0;
             }
-            if (e.keyCode == 81 && e.altKey) {
+            if (e.keyCode == 81 && e.altKey||e.keyCode == 187) {
                 if (mode == 0) {
                     var doc = frame.contentDocument || frame.contentWindow.document;
                     var scroll = doc.getElementsByClassName('tse-scroll-content');
@@ -56,7 +49,7 @@ window.onload = function () {
                     div.style.transform = "rotate(" + angle + "deg)";
                 }
             }
-            if (e.keyCode == 65 && e.altKey) {
+            if (e.keyCode == 65 && e.altKey||e.keyCode == 189) {
                 if (mode == 0) {
                     var doc = frame.contentDocument || frame.contentWindow.document;
                     var scroll = doc.getElementsByClassName('tse-scroll-content');
