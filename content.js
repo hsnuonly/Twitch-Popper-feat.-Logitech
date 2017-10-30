@@ -1,20 +1,5 @@
-$(document).ready(function () {
+window.onload = function () {
     var prevhref = null;
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = "https://embed.twitch.tv/embed/v1.js";
-    var jq = document.createElement("script");
-    jq.type = "text/javascript"
-    jq.src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js";
-    var pp = document.createElement("script");
-    pp.type = "text/javascript"
-    pp.src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js";
-    var bsj = document.createElement("script");
-    bsj.type = "text/javascript"
-    bsj.src = "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js";
-    var bsc = document.createElement("link");
-    bsc.rel = "stylesheet"
-    bsc.src = "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css";
 
     var root = document.getElementById("app");
     var div = document.createElement("DIV");
@@ -30,24 +15,24 @@ $(document).ready(function () {
     frame.setAttribute("width", "350px")
 
     var head = document.createElement("DIV");
-    head.style.backgroundColor = 'white';
-    head.style.height = "20px";
-    head.style.width = "350px";
-    head.setAttribute("id", "header")
-    head.style.zIndex = 10000;
+    head.setAttribute("id", "pop-header")
     div.appendChild(head);
 
     div.appendChild(frame);
-    div.style.zIndex = 2147483647;
     document.body.appendChild(div);
-    div.style.width = "350px";
-    div.style.right = 0;
-    div.style.top = '30%';
-    div.style.position = "absolute";
-    div.style.visibility = "hidden";
     var angle = 0;
     var mode = 1;
 
+    $("#twitch").draggable({
+        start: function () {
+            $(".AllContainerDivs").each(function (index, element) {
+            var d = $('<div class="iframeCover" style="zindex:99;position:absolute;width:100%;top:0px;left:0px;height:' + $(element).height() + 'px"></div>');
+            $(element).append(d);});
+        },
+        stop: function () {
+            $('.iframeCover').remove();
+        }
+    });
     document.onkeydown = function (e) {
         if (document.webkitIsFullScreen) {
             if (e.keyCode == 81 && e.ctrlKey) {
@@ -100,49 +85,4 @@ $(document).ready(function () {
         }
     });
 
-    dragElement(div);
-
-    function dragElement(elmnt) {
-        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-        if (document.getElementById("header")) {
-            /* if present, the header is where you move the DIV from:*/
-            document.getElementById("header").onmousedown = dragMouseDown;
-        } else {
-            /* otherwise, move the DIV from anywhere inside the DIV:*/
-            elmnt.onmousedown = dragMouseDown;
-        }
-
-        function dragMouseDown(e) {
-            e = e || window.event;
-            // get the mouse cursor position at startup:
-            pos3 = e.clientX;
-            pos4 = e.clientY;
-            document.onmouseup = closeDragElement;
-            // call a function whenever the cursor moves:
-            document.onmousemove = elementDrag;
-            div.onmousemove = elementDrag;
-            document.onmouseup = closeDragElement;
-        }
-
-        function elementDrag(e) {
-            e = e || window.event;
-            // calculate the new cursor position:
-            pos1 = pos3 - e.clientX;
-            pos2 = pos4 - e.clientY;
-            pos3 = e.clientX;
-            pos4 = e.clientY;
-            // set the element's new position:
-            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-        }
-
-        function closeDragElement() {
-            /* stop moving when mouse button is released:*/
-            document.onmouseup = null;
-            document.onmousemove = null;
-            div.onmouseup = null;
-            div.onmousemove = null;
-        }
-    }
-
-})
+}
