@@ -66,7 +66,6 @@ window.onload = function () {
         if (location.href != prevhref) {
             prevhref = location.href;
             frame.setAttribute("src", "https://www.twitch.tv" + location.pathname + "/chat")
-            frame.reload();
         }
     });
 }
